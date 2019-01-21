@@ -1,0 +1,11 @@
+### Java ###
+*.class
+
+### Intellij ###
+.idea
+out/
+target/
+
+# Log file
+*.log
+*.iml
