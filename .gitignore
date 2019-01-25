@@ -5,6 +5,7 @@
 .idea
 out/
 target/
+parquetFiles
 
 # Log file
 *.log

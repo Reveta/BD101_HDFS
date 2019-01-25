@@ -2,7 +2,6 @@ package com.app;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -29,11 +28,10 @@ public class ParquetUtilsTest {
     @Test
     public void writeToParquet() throws IOException {
 
-        Schema schema = ParquetUtils.parseSchema("src/test/resources/sample.avsc");
         //parquet file to be created in temporary folder
         File parquetFile = new File(tempFolder.getRoot()+"\\fileToBeCreated.parquet");
         assertFalse(parquetFile.exists());
-        ParquetUtils.writeToParquet(schema,"src/test/resources/sample.csv",parquetFile.getPath());
+        ParquetWriterEngine.writeToParquet("src/test/resources/sample.avsc","src/test/resources/sample.csv",parquetFile.getPath());
         assertTrue(parquetFile.exists());
 
         ParquetReader<GenericData.Record> parquetReader = AvroParquetReader
@@ -61,7 +59,7 @@ public class ParquetUtilsTest {
     @Test
     public void readParquetFile() {
 
-        ParquetUtils.readParquetFile("src/test/resources/fileForRead.parquet",5);
+        ParquetReaderEngine.readParquetFile("src/test/resources/fileForRead.parquet",5);
 
         assertEquals(  "{\"id\": 0, \"hotel_cluster\": \"a\"}\r\n" +
                 "{\"id\": 1, \"hotel_cluster\": \"b\"}\r\n" +
