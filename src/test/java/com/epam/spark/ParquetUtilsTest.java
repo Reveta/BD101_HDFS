@@ -1,4 +1,4 @@
-package com.app;
+package com.epam.spark;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;

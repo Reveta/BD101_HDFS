@@ -1,4 +1,4 @@
-package com.app;
+package com.epam.spark;
 
 import org.apache.avro.generic.GenericData;
 import org.apache.hadoop.conf.Configuration;
@@ -28,7 +28,7 @@ public class ParquetReaderEngine {
                     .build();
 
             GenericData.Record record;
-            for (; limitToShow > 0 && (record = reader.read()) != null; limitToShow++) {
+            for (; limitToShow > 0 && (record = reader.read()) != null; limitToShow--) {
                 System.out.println(record);
             }
 

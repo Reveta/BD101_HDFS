@@ -1,4 +1,4 @@
-package com.app;
+package com.epam.spark;
 
 import java.io.File;
 import java.io.IOException;
